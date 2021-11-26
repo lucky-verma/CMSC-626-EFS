@@ -1,0 +1,52 @@
+{
+        "acceptsSubType": true,
+        "acceptsVolName": true,
+        "autoCreatesMountPoint": false,
+        "autoDeletesMountPoint": false,
+        "autoMountsOnVolumeCreation": false,
+        "autorefreshOnMountUnMount": true,
+        "backendRequireMountPath": true,
+        "backendTimeout": 0,
+        "configFileArgument": "-cfg %{cipherFolder}/%{configFileName}",
+        "configFileNames": [
+                "utahfs.yaml"
+        ],
+        "createControlStructure": "",
+        "displayName":"",
+        "executableName": "utahfs-client",
+        "stringsToCheckForFailedMount": [],
+        "stringsToCheckForSuccessfulMount": ["filesystem successfully mounted"],
+        "fileExtensions": [],
+        "fuseNames": [
+                "fuse.utahfs"
+        ],
+        "idleString": "",
+        "keyFileArgument": "",
+        "likeSsh": false,
+        "mountControlStructure": "%{mountOptions} -mount %{mountPoint}",
+        "names": [
+                "utahfs"
+        ],
+        "passwordFormat": "",
+        "requiresAPassword": false,
+        "reverseString": "",
+        "runsInBackGround": false,
+        "setsCipherPath": false,
+        "defaultFavoritesMountOptions": "",
+        "sirikaliMinimumVersion":"",
+        "takesTooLongToUnlock": false,
+        "unMountCommand": [ "fusermount","-u","%{mountPoint}"],
+        "usesOnlyMountPoint": false,
+        "versionArgumentString": "",
+        "versionMinimum": "",
+        "versionOutputStdOut": true,
+        "versionStringTextPosition": [],
+        "volumePropertiesCommands": [],
+        "windowsExecutableFolderPath": "",
+        "windowsInstallPathRegistryKey": "",
+        "windowsInstallPathRegistryValue": "",
+        "windowsSupportsMountPointPaths": false,
+        "windowsUnMountCommand": [],
+        "wrongPasswordErrorCode": "",
+        "wrongPasswordText": ""
+}

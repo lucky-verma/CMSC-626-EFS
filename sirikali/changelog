@@ -1,0 +1,270 @@
+version 1.0.0
+-- Initial release.
+-- Can create and unlock Cryfs Volumes.
+-- Can create and unlock Encfs Volumes.
+-- Can create and unlock Gocryptfs Volumes.
+-- Can create and unlock Securefs Volumes.
+-- Can save and retrieve volumes keys from KDE wallet,GNOME's libsecret and an internal
+   secured storage system backed by libgcrypt.
+-- Can save favorite volumes for easier access to frequently used volumes.
+-- Can use keys derived from passphrases,keyfiles and a combination of a passphrase and a keyfile.
+-- Can be build with Qt4(default) or with Qt5.
+-- Can measure password strength when creating a new volume.
+   The support is added using libpwquality project: https://fedorahosted.org/libpwquality/
+
+-- Add ability to unmount all volumes at the same time(Menu->UnmountAll)
+-- Add ability to generate mounting dialog with a single action(Menu->Favorites->Mount All)
+
+-- Add French translations.
+
+-- Add ability to auto unlock a volume from CLI.An example of how to do this is:
+
+   sirikali -d /home/mtz/cryfs.volume -b "internal"
+
+   The "-b" option gives a passphrase storage backend to use to retrieve the password to unlock
+   the volume. Currently,only 3 backends are supported:
+   1. "internal" backend is always there and its backed by libgcrypt.
+   2. "kwallet" is backed by KDE wallet is a compile time dependency of the project.
+   3. "gnomewallet" is backed by GNOME's libsecret and is a compile time dependency of the project.
+
+   Set the backend to use a blank passphrase(not recommended) if you want to be able to unlock
+   your volumes without being prompt for a backend password.
+
+-- Add support for unlocking volumes using an external config file.
+-- Add a GUI ability to show cryfs file system space utilization.
+-- Add a menu entry to set default mount point path prefix.
+-- Add a convenient "HMAC+KeyFile" option to use a keyfile with an empty passphrase
+   as a volume password. "Key+KeyFile" option is to be used if volume passphrase is to be a combination
+   of a password and a keyfile. Both of these two options are better than using a "KeyFile" option
+   because keyfiles will most likely be truncated on the first new line character encountered and al the
+   contents of the keyfile may not be used leading to weak passphrase.
+
+version 1.1.0
+-- Add ability to automount favorites volumes on program start up time.
+-- Add ability to automount favorites volumes when they become available i.e. when the files systems the volume
+   resides in is mounted.
+
+version 1.2.0
+-- Add ability to add a favorite volume with mount options(external config file path,idle timeout,auto mount).
+-- Add a GUI option to select what secure key storage backend to use when auto mounting volumes.
+
+version 1.2.1
+-- Maintanance release.
+   -- FIX BUG: Don't generate an update warning prompt on startup when auto check for updates is set but the application
+               is started while the system has no internet connection.
+   -- FIX BUG: Don't auto delete mount folders when a volumes was unmounted outside of SiriKali.
+   -- FIX BUG: Populate $PATH variable properly before calling backends since some backends fails without it.
+   -- FIX BUG: The build process failed to build on Qt4
+
+version 1.2.2
+-- Add support for creating and unlocking ecryptfs volumes using ecryptfs-simple(https://github.com/mhogomchungu/ecryptfs-simple)
+
+version 1.2.3
+-- Make it possible to unlock a volume from favorite list without using key storage system.
+
+version 1.2.4
+-- Add OSX support.
+
+version 1.2.5
+-- Display backend error message to the user when SiriKali fails to figure out why requested operation failed.
+-- Its now possible to view typed in password when creating/unlocking a volume.
+
+version 1.2.6
+-- Add a build time option(-DUSE_POLKIT=true) to support ecryptfs-simple backend build without suid bit set.
+   This option will generate a polkit prompt on program start giving bad user experience. Enable it only if
+   ecryptfs-simple backend is a necessary backend to have and it has to be installed without suid bit.
+-- Default to not using a passward manager when unlocking volumes from favorites list.
+-- Add an option to lock all unlocked volumes and quit the application on success.
+-- Add a config option to run arbitrary command on successful mount attempt(arguments to the command will be
+   cipher folder,plain folder and volume type).
+-- All operations around locking and unlocking of volumes can now be done from CLI.
+-- Add a plugin that allows generation of a key using a key+keyfile combination through a user configured external application.
+   A user for example can set gpg as an external application so that they can extract a key from a gpg encrypted keyfile.
+-- Add a config option to disable displaying of passwords.
+-- Add ability to store passwords in OSX keychain.
+
+version 1.2.7
+-- Add ability to add mount options to a favorite entry.
+
+version 1.2.8
+-- Add a GUI way to set options when creating a securefs volume.
+-- Add a GUI way to set options when creating a cryfs volume.
+-- Add a GUI way to display gocryptfs volume properties.
+-- Better mount/unmount events monitoring on OSX.
+-- Set it as a run time option(off by default) to support ecryptfs-simple backend that does not have suid bit set. A user
+   will be asked to allow polkit support on first attempt.
+
+version 1.2.9
+-- Fix a crash on exit in OSX.
+-- Show all crypto options when creating Cryfs volume.
+
+version 1.3.0
+-- Add "~/bin" and "~/.bin" paths to list of folders to search for executables.
+-- Fix random crashes on OSX.
+
+version 1.3.1
+-- Add a config option on the menu list to set the app to start minimized.
+-- Fix stability issues on MACOS.
+-- Fix gocryptfs not showing up on MACOS
+
+version 1.3.2
+-- Drop support for Qt4.
+-- Add ability to specify a command to run before a volume is umounted. The specified command must return 0
+   for the unmount attempt to be carried out.
+-- Add a GUI window to manage program options.
+-- Add a GUI window to set crypto options when creating a gocryptfs volume.
+-- Add German translations.
+-- Update French translations.
+
+version 1.3.3
+-- Invoke context menu with a left click in addition to the default right click.
+-- Add a GUI windows to set ecryptfs volume creation options.
+-- Add a GUI way to upgrade cryfs volume(cryfs > 0.9.8 required).
+-- Make it possible to build the project with system provided "internal" libraries.
+
+version 1.3.4
+-- Add support for Microsoft Windows operating system.
+-- Add support for sshfs backend on Linux and Windows..
+-- Add support for encfs backend on windows.
+
+version 1.3.5(August 1st,2018)
+
+-- Add "-DPOLKIT_SUPPORT=" compile time option to disable polkit support. Suid root-less ecryptfs-simple backend
+   will not work if this option is turned off.
+-- Fix a bug on windows that prevented SiriKali from seeing 64 bit sshfs-win.
+-- Add ability to edit favorites entries.
+-- Fix a bug on windows when unlocking securefs volume with a custom config path.
+
+version 1.3.6(October 01,2018)
+-- Add ability to pass both fuse options and options specific to backends when unlocking a volume.
+   -- For example, this option will allow passing "--allow-filesystem-upgrade" option to cryfs backend when
+      unlocking a cryfs volume to automatically upgrade the volume's file system when necessary.
+-- Add a GUI way to create and unlock gocryptfs and encfs volumes in reverse mode.
+-- Fix a bug in windows that allowed more than once instance to run.
+-- Create drive letters on Windows with a label equals to the name of the cipher folder when unlocking volumes.
+
+version 1.3.7(February 09,2019)
+-- Add support for gocryptfs "idle" option.
+-- Add ability to set a favorite volume that does not need a password. Useful when connecting to ssh server
+   with a private key that does not need a password or when getting credentials from external tools like keepass.
+-- Add a config option to auto unmount volumes on logout(specifically, when SiriKali receive sighup or sigterm).
+-- Add Russian translations.
+-- Fix a bug that prevented mounting gocryptfs volumes on MACOS.
+-- Translations now works on MACOS.
+-- Add support for Cryfs backend on windows.
+-- Add support for using a mount folder on windows(sshfs, encfs and cryfs supports both mount folders and drive letters)
+
+version 1.3.8(May 01,2019)
+-- Remove backend timeout of 20 seconds because cryfs >= 0.10.0 may take a very long time to finish.
+-- Show a warning that says working with cryfs >= 0.10.0 may take a very long time when creating/unlocking cryfs volumes.
+-- Improves a window that manages favorites.
+
+version 1.3.9(August 01,2019)
+-- Add ability to run a custom command on user specified time interval.
+-- Add ability to set premount, postmount, preunmount and postunmount commands to run per favorite entry.
+-- Add support for creating and unlocking volumes using yubikey's challenge-response feature.
+-- Add ability to run user created custom backends/extensions. This feature make it possible to configure SiriKali
+   to run any tool that deals with mounting file systems. Documentation on how to create a custom backed is
+   here: https://github.com/mhogomchungu/sirikali/wiki/How-to-create-SiriKali-custom-backend
+-- Fix an occasional crash that happens when creating an internal wallet when an internal version of
+   lxqt_wallet is in use.
+
+version 1.4.0(October 01,2019)
+-- Make it buildable again on Qt < 5.10.0(1.3.9 broke this promise because it should be buildable in debian 8)
+-- Add a config option to show favorites entries on the tray icon context menu with an ability to
+   mount/unmount volume from the menu.
+-- Fix a bug that prevented favorite entries with cipher path that starts with a dot from showing up in the GUI.
+-- Add GUI options to enable HiDPI option to scale the GUI when running in HiDPI displays.
+
+version 1.4.1(October 15,2019)
+-- Add support for fscrypt backend. This backend will allow encrypting individual folders that reside in a
+   file system that supports encryption like ext4. More info about this backed is here: https://github.com/google/fscrypt
+-- Fix a bug with sshfs backend introduced in 1.4.0.
+-- Various changes and improvements.
+
+version 1.4.2(December 18,2019)
+-- Assume passwords are utf8 encoded instead of latin-1. This is a breaking change for those who were using a
+   password that was not a valid latin-1 password.
+-- Fix a crash on windows when an sshfs favorite entry is created with a remote folder path of just ":/", example
+   is a remote address of "abc@example:/".
+-- Add a visible option to choose between creating a local drive or a network drive when connecting to ssh server
+   on windows.
+-- Enforce a requirement that says Sshfs-win should be at least version 3.4.0.
+-- Add support for "lock" command in fscrypt backend. This option is used for locking directories that use V2
+   encryption policies.
+
+   version 1.4.3(April 01,2020)
+-- Add ability to set arbitrary folder paths to monitor for mount events.
+-- Add ability to monitor gvfs mount events.
+-- Fix a bug that prevented unlocking volumes with a path that contains "," character. The bug was due to fuse
+   using the character as an option separator.
+-- Fix a bug that prevented recent versions of unlocked securefs from showing up in the GUI in MACOS.
+-- Add a GUI option to "allow replaced file system" when creating/unlocking CryFS volume.
+-- Set the option "--allow-replaced-filesystem" by default when creating a CryFS volume.
+-- When dealing with CryFs volume, do not support paths that are not in drive C to work around
+    this bug: https://github.com/cryfs/cryfs/issues/319
+-- Fix a breaking change in how fscrypt 0.2.7 reported its version info.
+
+    version 1.4.4(June 01,2020)
+    [WINDOWS]
+-- Add support for storing keys securely on Windows by using Window's Data Protection API.
+
+    [LINUX][FSCRYPT]
+-- Fix a bug that causes fscrypt folders paths that contain a space character from showing up in the GUI.
+-- Prevent fscrypt error when creating a new volume with an already taken protector name by making sure
+    we are using a unique protector name.
+-- Add a GUI option to set protector's name when creating fscrypt volume.
+-- Add a GUI option to choose between using a custom passphrase,login passphrase or a key file
+    when creating fscrypt volume.
+-- Add support for fscrypt keyfile.
+
+    [ALL][ENCFS]
+-- Fix a bug with encfs < 1.9.5 when used with custom config path location. SiriKali will now pass the path
+    through enviromental variable instead of using --config CLI option.
+
+    [ALL][SECUREFS]
+-- Add support for securefs key file(introduced in securefs version 0.11.1).
+
+    [ALL]
+-- Rework UI and move key management feature from settings windows to favorites window.
+
+   version 1.4.5(August 01,2020)
+    [ALL]
+-- Make it compile with Qt 5.15.0 without warnings(remove Qt's deprecated APIs).
+-- Declare backend API to be stable and provide a few examples backends.
+    SiriKali now supports custom backends that can be added by users by providing json based
+    configuration files and place them in either "$HOME/.config/SiriKali/backends" or in
+    "$INSTALL_PREFIX/share/SiriKali/backends". Look in "custom backends" folder for
+    more information.
+-- Fix a bug that caused SiriKali to attempt to auto unlock not available favorite volume at startup.
+-- Fix a bug that caused SiriKali to delay showing up in GNOME or any other DE that does not use
+    system tray functionality.
+
+   version 1.4.6(August 03,2020)
+    [ALL]
+-- Fix a crash when trying to unlock volume by clicking the "mount volume" button.
+
+   version 1.4.7(October 01,2020)
+   [ALL]
+-- Make the UI more user friendly to ssh based backends by using texts that make most sense
+   in this backend.
+-- Make CLI interface work when working in a none GUI environment by using
+   QCoreApplication instance instead of QApplication instance.
+-- Add a GUI way to add port number to sshfs connections and make it possible to set different wallet
+   passwords based on connection's port number.
+-- Do not silently fail when a user attempt to add a favorite entry and its name collide with an
+   existing entry.
+-- Add explicit support for extensions that do not use cipher path and use "google-drive-ocamlfuse"
+   as a reference program.
+
+   version 1.4.8(December 01,2020)
+   [ALL]
+-- Mounting items in Favorites now respects Re Use Mount Point setting.
+
+   [LINUX]
+-- Add cryptomator CLI backend(https://github.com/mhogomchungu/cli).
+-- Kwallet now works when it was not build in at compile time by accessing it through dbus.
+-- Only show volumes unlocked by the current user by default.
+
+   [WINDOWS]
+-- Update Qt to version 5.15.1

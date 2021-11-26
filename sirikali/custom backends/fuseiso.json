@@ -1,0 +1,52 @@
+{
+        "acceptsSubType": true,
+        "acceptsVolName": true,
+        "autoCreatesMountPoint": false,
+        "autoDeletesMountPoint": false,
+        "autoMountsOnVolumeCreation": false,
+        "autorefreshOnMountUnMount": true,
+        "backendRequireMountPath": true,
+        "backendTimeout": 0,
+        "configFileArgument": "",
+        "configFileNames": [],
+        "createControlStructure": "",
+        "displayName":"",
+        "executableName": "fuseiso",
+        "stringsToCheckForFailedMount": [],
+        "stringsToCheckForSuccessfulMount": [],
+        "fileExtensions": [
+                 ".iso"," .nrg"," .bin"," .mdf",".img"
+        ],
+        "fuseNames": [
+                "fuse.fuseiso"
+        ],
+        "idleString": "",
+        "keyFileArgument": "",
+        "likeSsh": false,
+        "mountControlStructure": "%{mountOptions} %{cipherFolder} %{mountPoint} %{fuseOpts}",
+        "names": [
+                "fuseiso"
+        ],
+        "passwordFormat": "",
+        "requiresAPassword": false,
+        "reverseString": "",
+        "runsInBackGround": true,
+        "setsCipherPath": true,
+        "defaultFavoritesMountOptions": "",
+        "sirikaliMinimumVersion":"",
+        "takesTooLongToUnlock": false,
+        "unMountCommand": [],
+        "usesOnlyMountPoint": false,
+        "versionArgumentString": "--version",
+        "versionMinimum": "",
+        "versionOutputStdOut": true,
+        "versionStringTextPosition": [ 0,1 ],
+        "volumePropertiesCommands": [],
+        "windowsExecutableFolderPath": "",
+        "windowsInstallPathRegistryKey": "",
+        "windowsInstallPathRegistryValue": "",
+        "windowsSupportsMountPointPaths": false,
+        "windowsUnMountCommand": [],
+        "wrongPasswordErrorCode": "",
+        "wrongPasswordText": ""
+}

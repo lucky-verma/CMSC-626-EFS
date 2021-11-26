@@ -1,0 +1,69 @@
+
+This tool depends on the following packages installed to build, their precise name may differ in your distro.
+
+Look in "debian.upstream" folder for information on how to build a debian package.
+
+3. For Qt4 build(libqt4-devel or a package that provides libqt4-network-devel,libqtcore4-devel,libqtgui4-devel)
+   For Qt5 build(qt5-base-devel or a packages that provides Qt5Core-devel,Qt5Gui-devel,Qt5Network-devel)
+4. gcc or any other C compiler
+5. gcc-c++ or any other C++ compiler
+7. cmake
+8. pwquality-devel( optional dependency used to measure the quality of a password when creating volumes )
+9. libgcrypt-devel or libgcrypt11-dev
+10. libsecret-devel or libsecret-1-dev( optional dependency to store keys in gnome's libsecret )
+11. kde-devel( optional dependency to store keys in kde's kwallet )
+12. pkg-config
+13. lxqt_wallet-devel( optional dependency used for secure storage of keys.An internal copy of this project will be
+   used if an external version is not present )
+14. xdg-utils( runtime dependency used call a file manager to display contents of an unlocked volume.
+
+To build SiriKali with default options,run these 5 commands from inside SiriKali source folder.
+
+*****************************************************************************************************
+
+mkdir build
+
+cd build
+
+cmake -DCMAKE_INSTALL_PREFIX=/usr -DQT5=true -DCMAKE_BUILD_TYPE=RELEASE . ..
+
+make -j$(nproc)
+
+make install( or sudo make install )
+
+*****************************************************************************************************
+
+The build system now uses GNUInstallDirs (https://cmake.org/cmake/help/v3.5/module/GNUInstallDirs.html), so pretty much all directories can be controlled properly.
+
+available build options:
+
+-DCMAKE_INSTALL_PREFIX=/usr
+This option tells the build process to install project's files in "/usr/".
+
+-DCMAKE_INSTALL_LIBDIR=lib
+This option specifies the base directory where libraries should be installed. Normally, this is automatically detected.
+
+-DCMAKE_BUILD_TYPE=RELEASE
+This option tells the build process to build the project in release mode.This mode is most suitable for non developers.
+
+-DNOSECRETSUPPORT=false
+This option tells the build process to add gnome's libsecret secure storage of passwords.Set this option to "true" if
+you do not want libsecret's support.
+
+-DNOKDESUPPORT=false
+This option tells the build process to add KDE's secure storage of passwords.Set this option to "true" if you do not
+want KDE wallet support.
+
+-DINTERNAL_LXQT_WALLET=false
+This project depends on lxqt_wallet project and it ships with an internal copy of the project. Set this option to "true"
+if you want SiriKali to unconditionally use the internal copy of the project or to "false" to make the build process
+use a system installed version if found.
+
+-DNONETWORKSUPPORT=true
+This options tells the build process to add QNetwork support. Set this option to true if you do not want SiriKali to
+connect to the internet to check for backend updates. SiriKali will not automatically connect to the internet
+without user consent. This option was added because some versions of Qt crashes some versions of gcc
+when encountering QNetworkAccessManager class.
+
+Build errors/test failures/feature requests/recommendations can be reported at: https://github.com/mhogomchungu/SiriKali/issues
+or using my private email address at: mhogomchungu@gmail.com

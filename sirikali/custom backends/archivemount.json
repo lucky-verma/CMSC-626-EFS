@@ -1,0 +1,53 @@
+{
+        "acceptsSubType": true,
+        "acceptsVolName": true,
+        "autoCreatesMountPoint": false,
+        "autoDeletesMountPoint": false,
+        "autoMountsOnVolumeCreation": false,
+        "autorefreshOnMountUnMount": true,
+        "backendRequireMountPath": true,
+        "backendTimeout": 0,
+        "configFileArgument": "",
+        "configFileNames": [],
+        "createControlStructure": "",
+        "displayName":"",
+        "executableName": "archivemount",
+        "fileExtensions": [
+                ".tar.xz",".tar.gz"
+        ],
+        "fuseNames": [
+                "fuse.archivemount"
+        ],
+        "idleString": "",
+        "keyFileArgument": "",
+        "likeSsh": false,
+        "mountControlStructure": "%{mountOptions} %{cipherFolder} %{mountPoint} %{fuseOpts}",
+        "minimumVersion":"",
+        "names": [
+                "archivemount"
+        ],
+        "passwordFormat": "",
+        "requiresAPassword": false,
+        "reverseString": "",
+        "runsInBackGround": true,
+        "setsCipherPath": true,
+        "stringsToCheckForFailedMount": [],
+        "stringsToCheckForSuccessfulMount": [],
+        "defaultFavoritesMountOptions": "",
+        "sirikaliMinimumVersion":"",
+        "takesTooLongToUnlock": false,
+        "unMountCommand": [],
+        "usesOnlyMountPoint": false,
+        "volumePropertiesCommands": [],
+        "versionArgumentString": "--version",
+        "versionMinimum":"",
+        "versionOutputStdOut": false,
+        "versionStringTextPosition": [ 0,2 ],
+        "windowsExecutableFolderPath": "",
+        "windowsInstallPathRegistryKey": "",
+        "windowsInstallPathRegistryValue": "",
+        "windowsSupportsMountPointPaths": false,
+        "windowsUnMountCommand": [],
+        "wrongPasswordErrorCode": "",
+        "wrongPasswordText": ""
+}

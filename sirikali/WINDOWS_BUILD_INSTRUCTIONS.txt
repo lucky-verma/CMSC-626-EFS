@@ -1,0 +1,26 @@
+
+1. Install Qt Creator and Qt Libraries for windows(gcc version)
+   - Download link is somewhere at https://www.qt.io/download
+
+2. Get SiriKali sources.
+
+3. Start Qt Creator and load CMakeLists.txt file from the root
+   folder of SiriKali sources.
+
+4. Build SiriKali in release mode.
+
+5. Go to a build folder where Qt Creator build SiriKali and copy
+   "sirikali.exe" executable to a new folder.
+
+6. Copy all libraries in "libs/lib" subfolders located in
+   SiriKali source folder and put them in the same folder as
+   "sirikali" binary.
+
+7. Open the terminal and browse to a folder where you have added "sirikali"
+   binary and run the following commands:
+
+8 Copy the contents of a file named "sirikali_windows_installer_commands"
+  found in the build folder and paste them on the terminal. Those commands will
+  copy all necessary libraries to the folder.
+
+9. Double click "sirikali.exe" file and SiriKali should start.
